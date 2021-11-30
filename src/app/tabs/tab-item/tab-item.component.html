@@ -1,0 +1,11 @@
+<div #title class="tabs__title" [class.tabs__title--active]="active | async">
+  <ng-content select="tab-title"></ng-content>
+</div>
+
+<ng-container *ngIf="active | async">
+  <ng-container *ngIf="contentTemplate; else static" [ngTemplateOutlet]="contentTemplate"></ng-container>
+</ng-container>
+
+<ng-template #static>
+  <ng-content select="tab-content"></ng-content>
+</ng-template>
